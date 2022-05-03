@@ -11,79 +11,92 @@ function number(n, e) {
         number1.push(n);
     } else if(process === 1) {                
         number2.push(n);
-    } else {
+    } else if(process === 2) {
         e.preventDefault();
     }
 
     display.append(n);    
 }
 
-function addition(e) {  
-    if(process === 0) {        
-        display.innerHTML = `${number1.join('')}+`;  
-        process++;
-        operation = '+';
-        document.querySelector('#addition').classList.add('active');
-    } else {
+function addition(e) {
+    if(process == 1 | process == 2)  {
         e.preventDefault();
     }
-    
+
+    if(number1.length !== 0) { 
+        process = 1;        
+        operation = '+';
+        display.innerHTML = `${number1.join('')}+`;
+        document.querySelector('#addition').classList.add('active');              
+    }    
 }
 
 function subtraction(e) { 
-    if(process === 0) {
-        display.innerHTML = `${number1.join('')}-`;    
-        process++;
-        operation = '-';
-        document.querySelector('#subtraction').classList.add('active');
-    } else {
+    if(process == 1 | process == 2)  {
         e.preventDefault();
+    }
+
+    if(number1.length !== 0) { 
+        process = 1;        
+        operation = '-';
+        display.innerHTML = `${number1.join('')}-`;
+        document.querySelector('#subtraction').classList.add('active');              
     }
 }
 
 function multiplication(e) {  
-    if(process === 0) {
-        display.innerHTML = `${number1.join('')}*`;    
-        process++;
-        operation = '*';
-        document.querySelector('#multiplication').classList.add('active');
-    } else {
+    if(process == 1 | process == 2)  {
         e.preventDefault();
+    }
+
+    if(number1.length !== 0) { 
+        process = 1;        
+        operation = '*';
+        display.innerHTML = `${number1.join('')}*`;
+        document.querySelector('#multiplication').classList.add('active');              
     }
 }
 
 function division(e) {  
-    if(process === 0) {
-        display.innerHTML = `${number1.join('')}/`;    
-        process++;
-        operation = '/';
-        document.querySelector('#division').classList.add('active');
-    } else {
+    if(process == 1 | process == 2)  {
         e.preventDefault();
+    }
+
+    if(number1.length !== 0) { 
+        process = 1;        
+        operation = '/';
+        display.innerHTML = `${number1.join('')}/`;
+        document.querySelector('#division').classList.add('active');              
     }
 }
 
-function result() {    
-    let n1 = convertion(number1);
-    let n2 = convertion(number2); 
+function result(e) {  
+    if(process == 0 | process == 2) {
+        e.preventDefault();
+    }
+    
+    if(number2.length !== 0) {
+        let n1 = convertion(number1);
+        let n2 = convertion(number2); 
+            
+        if(Number.isNaN(n1) | Number.isNaN(n2)) {
+            n1 = 0;
+            n2 = 0;
+        }
+
+        if(operation === '+') {        
+            resultFinal = n1 + n2;        
+        } else if(operation === '-') {        
+            resultFinal = n1 - n2;        
+        } else if(operation === '*') {        
+            resultFinal = n1 * n2;        
+        } else if(operation === '/') {        
+            resultFinal = n1 / n2;        
+        }
         
-    if(Number.isNaN(n1) | Number.isNaN(n2)) {
-        n1 = 0;
-        n2 = 0;
-    }
-
-    if(operation === '+') {        
-        resultFinal = n1 + n2;        
-    } else if(operation === '-') {        
-        resultFinal = n1 - n2;        
-    } else if(operation === '*') {        
-        resultFinal = n1 * n2;        
-    } else if(operation === '/') {        
-        resultFinal = n1 / n2;        
-    }
-
-    display.innerHTML = resultFinal.toFixed(2);  
-    process++;    
+        display.innerHTML = resultFinal; 
+        process = 2;
+    } 
 }
 
 function convertion(n) {
