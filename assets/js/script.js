@@ -5,6 +5,7 @@ let number2 = [];
 let resultFinal = 0;
 let operation = '';
 
+
 function number(n, e) {
     if(process === 0) {
         number1.push(n);
@@ -13,13 +14,13 @@ function number(n, e) {
     } else {
         e.preventDefault();
     }
-    
+
     display.append(n);    
 }
 
 function addition(e) {  
-    if(process !== 2) {
-        display.innerHTML = '';  
+    if(process === 0) {        
+        display.innerHTML = `${number1.join('')}+`;  
         process++;
         operation = '+';
         document.querySelector('#addition').classList.add('active');
@@ -30,8 +31,8 @@ function addition(e) {
 }
 
 function subtraction(e) { 
-    if(process !== 2) {
-        display.innerHTML = '';  
+    if(process === 0) {
+        display.innerHTML = `${number1.join('')}-`;    
         process++;
         operation = '-';
         document.querySelector('#subtraction').classList.add('active');
@@ -41,8 +42,8 @@ function subtraction(e) {
 }
 
 function multiplication(e) {  
-    if(process !== 2) {
-        display.innerHTML = '';  
+    if(process === 0) {
+        display.innerHTML = `${number1.join('')}*`;    
         process++;
         operation = '*';
         document.querySelector('#multiplication').classList.add('active');
@@ -52,8 +53,8 @@ function multiplication(e) {
 }
 
 function division(e) {  
-    if(process !== 2) {
-        display.innerHTML = '';  
+    if(process === 0) {
+        display.innerHTML = `${number1.join('')}/`;    
         process++;
         operation = '/';
         document.querySelector('#division').classList.add('active');
@@ -62,10 +63,10 @@ function division(e) {
     }
 }
 
-function result() { 
+function result() {    
     let n1 = convertion(number1);
     let n2 = convertion(number2); 
-    
+        
     if(Number.isNaN(n1) | Number.isNaN(n2)) {
         n1 = 0;
         n2 = 0;
@@ -81,9 +82,8 @@ function result() {
         resultFinal = n1 / n2;        
     }
 
-    display.innerHTML = resultFinal;  
-    process++;  
-    
+    display.innerHTML = resultFinal.toFixed(2);  
+    process++;    
 }
 
 function convertion(n) {

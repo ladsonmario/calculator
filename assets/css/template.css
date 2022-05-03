@@ -77,3 +77,8 @@ body {
 .result {
     background-color: #00ADB5;
 }
+footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 16px;
+}
