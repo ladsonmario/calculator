@@ -25,14 +25,28 @@ body {
     box-shadow: 0px 0px 10px #333;
     border-radius: 10px;
 }
-.display {
+.display--container {
     width: 290px;
     height: 50px;    
     display: flex;
     justify-content: center;  
-    align-items: center;  
+    align-items: flex-end;  
     background: linear-gradient(90deg, #ddd, #fff, #ccc);
     border-radius: 10px;
+    position: relative;
+}
+.display--operations {
+    position: absolute;
+    top: 0;    
+    font-size: 16px;
+    font-weight: bold;
+    color: #aaa;
+}
+.display--operations span {
+    margin: 0px 5px;
+}
+.active {
+    color: #00ADB5;
 }
 .buttons--number .button,
 .buttons {
@@ -62,5 +76,4 @@ body {
 }
 .result {
     background-color: #00ADB5;
-
 }
