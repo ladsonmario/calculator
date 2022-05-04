@@ -1,6 +1,6 @@
 # calculator
-Basic calculator for 4 operations.
-languages used: HTML, CSS and JavaScript.
+Basic calculator for 4 operations.<br/>
+languages used: HTML, CSS and JavaScript.<br/>
 Operation:
 1. type it first number 
 2. select operation
